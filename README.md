@@ -7,7 +7,7 @@ First python workshop for Astronomers and Particle Physicists, organized by ICE,
 Indico page: https://www.ice.csic.es/indico/event/5/overview
 
 * When?
-  * Start: **Wednesdat, Sept 13 at 9:30 am**
+  * Start: **Wednesday, Sept 13 at 9:30 am**
   * End: Friday, Sept 15 at noon
 * Where? 
   * ICE
