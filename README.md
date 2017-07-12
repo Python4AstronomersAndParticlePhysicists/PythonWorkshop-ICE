@@ -11,7 +11,7 @@ Indico page: https://www.ice.csic.es/indico/event/5/overview
   * End: Friday, Sept 15 at noon
 * Where?
   * ICE
-  * Conference room  in the third floor
+  * Conference room on the third floor
 
 * Contacts:
   * Santiago Serrano (serrano@ieec.uab.es)
@@ -63,7 +63,7 @@ Thursday, 14 September 2017
 * Machine Learning I
 * Machine Learning II
 
-Friday 15, September 2017
+Friday, 15 September 2017
 * Astronomy I
 * Astronomy II
 * Modeling and Databases
