@@ -1,6 +1,6 @@
 # Python for Astronomers and Particle Physicists, September 2017, ICE
 
-First python workshop for Astronomers and Particle Physicists, organized by ICE, IFAE and PIC
+First Python workshop for Astronomers and Particle Physicists, organized by ICE, IFAE, and PIC.
 
 ## Basic information
 
@@ -9,7 +9,7 @@ Indico page: https://www.ice.csic.es/indico/event/5/overview
 * When?
   * Start: **Wednesday, Sept 13 at 9:30 am**
   * End: Friday, Sept 15 at noon
-* Where? 
+* Where?
   * ICE
   * Conference room  in the third floor
 
@@ -20,25 +20,25 @@ Indico page: https://www.ice.csic.es/indico/event/5/overview
 
 ## About
 
-This workshop is designed to introduce IFAE and ICE astronomers and particle physicists to modern programming practices in Python specifically applicable to their scientific research. The course is intended to be hands-on so that participants will be able to follow, discuss and reuse the examples explained during each lesson. Sessions will cover from the most basic programming practices to intermediate-advanced tools specific for scientists.
+This workshop is designed to introduce IFAE and ICE astronomers and particle physicists to modern programming practices in Python specifically applicable to their scientific research. The course is intended to be hands-on so that participants will be able to follow, discuss, and reuse the examples explained during each lesson. Sessions will cover topics from the most basic programming practices to intermediate/advanced tools specific for scientists.
 
-Even the workshop will begin with some beginner lessons, it is recommended to know the basics before starting the workshop. For those who have not programmed in python before, we encourage to take this online python course: http://sthurlow.com/python/ 
+Although the workshop will begin with some beginner lessons, it is *highly* recommended to know the basics before starting the workshop. For those who have not programmed in Python before, we encourage you to take this online Python 3 course: https://www.learnpython.org
 
-We encourage everyone to come with his laptop and run all the examples that each session will be presenting (even this is not mandatory). 
+We encourage everyone to come with their laptop and run all the examples as they are presented in each session (although this is not mandatory).
 
-After the first 30 minutes of preparation, teachers will not be able to assist you in your python setup as sessions will need to get started.
+The first 30 minutes of the course will be dedicated to setting up Python and the needed packages. After the first 30 minutes of preparation, instructors will not be able to assist you in your Python setup due to time constraints.
 
-So before arriving to the workshop make sure you have a python 2.7 installed with:
+Before arriving to the workshop, make sure you have Python 3 installed with:
 
     numpy
     scipy
     matplotlib
     pandas
     astropy
-    pip
     jupyter
+    pip
 
-Optionally install also:
+These packages are needed for the more advanced sections:
 
     seaborn
     photutils
@@ -46,14 +46,37 @@ Optionally install also:
     astroquery
     sqlalchemy
 
-More instructions on how to install and verify the correct python setup will be detailed soon.
+More instructions on how to install and verify the correct Python setup will be detailed soon.
 
 ## Agenda
 
-To be done
+Wednesday, 13 September 2017
+* Welcome and Setup
+* Python: the Language
+* Good Programming Practices
+* Numpy - Arrays and Linear Algebra
+* Matplotlib - Plotting
 
-## Participants
+Thursday, 14 September 2017
+* Pandas - Handling Tabular Data
+* Scipy - Fitting Data and More
+* Machine Learning I
+* Machine Learning II
 
-* Santiago Serrano
-* Tarek Hassan
-* ...
+Friday 15, September 2017
+* Astronomy I
+* Astronomy II
+* Modeling and Databases
+* Big Data
+
+## Instructors
+
+* Santiago Serrano (ICE)
+* Tarek Hassan (IFAE)
+* Scott Griffiths (IFAE)
+* Max Nöthe (TU Dortmund)
+* Kai Brügge (TU Dortmund)
+* Nadia Tonello (PIC)
+* Pau Tallada (PIC)
+* Jorge Carretero (PIC)
+* Francesc Torradeflot (PIC)
