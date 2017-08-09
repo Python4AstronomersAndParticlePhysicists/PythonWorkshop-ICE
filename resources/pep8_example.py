@@ -2,7 +2,7 @@
 This is some ugly code that does not conform to PEP 8.
 
 Check me with pycodestyle:
-    pycodestyle pep8_example.py
+    pycodestyle ../resources/pep8_example.py
 """
 from string import *
 import math, os, sys
