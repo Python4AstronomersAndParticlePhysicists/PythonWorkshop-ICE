@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
-import pandas as pd
+from sklearn.metrics import confusion_matrix
+
 import seaborn as sns
 import numpy as np
 
@@ -19,45 +20,6 @@ def plot_exercise_1(A, B, x1s, x2s):
     plt.ylabel('X2')
     plt.margins(x=0, y=0)
     plt.legend()
-
-
-def plot_exercise_2(y_test, prediction_linear, prediction_rbf):
-
-    fig, ([ax1, ax2], [ax3, ax4]) = plt.subplots(2, 2, figsize=(10, 10))
-
-    (y_test == prediction_linear).value_counts().plot.barh(ax=ax1)
-    cm = pd.crosstab(y_test, prediction_linear, rownames=['Actual'], colnames=['Predicted'])
-    sns.heatmap(
-        cm,
-        annot=True,
-        fmt='d',
-        cmap='RdPu',
-        xticklabels=['No', 'Yes'],
-        yticklabels=['No', 'Yes'],
-        vmin=0, vmax=200,
-        ax=ax2
-    )
-    ax1.set_title('Linear SVM')
-    ax1.text(200, 1, 'Accuracy {:0.3f}'.format(accuracy_score(y_test, prediction_linear)))
-    ax1.set_xlim([0, 300])
-
-
-    (y_test == prediction_rbf).value_counts().plot.barh(ax=ax3)
-    cm = pd.crosstab(y_test, prediction_rbf, rownames=['Actual'], colnames=['Predicted'])
-    sns.heatmap(
-        cm,
-        annot=True,
-        fmt='d',
-        cmap='RdPu',
-        xticklabels=['No', 'Yes'],
-        yticklabels=['No', 'Yes'],
-        vmin=0, vmax=200,
-        ax=ax4
-    )
-
-    ax3.set_title('Radial SVM')
-    ax3.text(200, 1, 'Accuracy {:0.3f}'.format(accuracy_score(y_test, prediction_rbf)))
-    ax3.set_xlim([0, 300])
 
 
 def draw_svm_decission_function(clf, ax=None, **kwargs):
@@ -94,7 +56,7 @@ def draw_linear_regression_function(reg, ax=None, **kwargs):
     ax.plot(x1s, x2s, **kwargs)
 
 
-def draw_knn_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwargs):
+def draw_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwargs):
     if not ax:
         ax = plt.gca()
 
@@ -109,4 +71,35 @@ def draw_knn_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwa
 
     # plot decision boundary and margins
     cs = ax.contourf(X1, X2, Z, **kwargs, cmap=cmap, alpha=alpha,)
-    cs.collections[0].set_label(kwargs.get('label', 'KNN Decission Boundary'))
+    cs.collections[0].set_label(kwargs.get('label', 'Decission Boundary'))
+
+
+def plot_bars_and_confusion(truth, prediction, axes=None, vmin=None, vmax=None):
+    accuracy = accuracy_score(truth, prediction)
+    cm = confusion_matrix(truth, prediction)
+
+    if not axes:
+        fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+    if not vmin:
+        vmin = cm.min()
+
+    if not vmax:
+        vmax = cm.max()
+
+    (prediction == truth).value_counts().plot.barh(ax=axes[0])
+    axes[0].text(150, 0.5, 'Accuracy {:0.3f}'.format(accuracy))
+
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt='d',
+        cmap='RdPu',
+        xticklabels=['No', 'Yes'],
+        yticklabels=['No', 'Yes'],
+        ax=axes[1],
+        vmin=vmin,
+        vmax=vmax,
+    )
+    axes[1].set_ylabel('Actual')
+    axes[1].set_xlabel('Predicted')
