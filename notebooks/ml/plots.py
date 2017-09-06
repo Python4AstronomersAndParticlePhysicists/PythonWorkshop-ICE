@@ -19,8 +19,6 @@ def plot_exercise_1(A, B, x1s, x2s):
     plt.xlabel('X1')
     plt.ylabel('X2')
     plt.margins(x=0, y=0)
-    plt.xlim([-8, 8])
-    plt.ylim([-8, 8])
     plt.legend()
 
 
@@ -74,10 +72,9 @@ def draw_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwargs)
     # plot decision boundary and margins
     cs = ax.contourf(X1, X2, Z, **kwargs, cmap=cmap, alpha=alpha,)
     cs.collections[0].set_label(kwargs.get('label', 'Decission Boundary'))
-    ax.axis('off')
 
 
-def draw_decission_surface(clf, predictions, label=' '):
+def draw_decission_surface(clf, predictions):
     ax = plt.gca()
     x_low, x_high = ax.get_xlim()
     y_low, y_high = ax.get_ylim()
@@ -90,7 +87,7 @@ def draw_decission_surface(clf, predictions, label=' '):
 
     plt.imshow(Z, extent=[x_low, x_high, y_low, y_high], cmap='GnBu', origin='lower', vmin=0, vmax=1)
     plt.grid()
-    plt.colorbar(label=label)
+    plt.colorbar()
     plt.axis('off')
 
 
