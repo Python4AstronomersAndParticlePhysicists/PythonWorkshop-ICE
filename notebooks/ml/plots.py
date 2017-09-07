@@ -6,22 +6,6 @@ import seaborn as sns
 import numpy as np
 
 
-def plot_exercise_1(A, B, x1s, x2s):
-    # plotting code
-    plt.scatter(A[:, 0], A[:, 1], s=25, color='dodgerblue', label='True class A')
-    plt.scatter(B[:, 0], B[:, 1], s=25, color='limegreen', label='True class B')
-
-    plt.plot(x1s, x2s, color='gray', linestyle='--')
-
-    plt.fill_between(x1s, x2s, 10, color='dodgerblue', alpha=0.07)
-    plt.fill_between(x1s, x2s, -10, color='limegreen', alpha=0.07)
-    plt.grid()
-    plt.xlabel('X1')
-    plt.ylabel('X2')
-    plt.margins(x=0, y=0)
-    plt.legend()
-
-
 def draw_svm_decission_function(clf, ax=None, **kwargs):
     if not ax:
         ax = plt.gca()
@@ -39,6 +23,7 @@ def draw_svm_decission_function(clf, ax=None, **kwargs):
     # plot decision boundary and margins
     cs = ax.contour(X1, X2, Z, levels=[-1., 0, 1.0], linestyles=['--', '-', '--'], **kwargs)
     cs.collections[0].set_label(kwargs.get('label', 'SVM Decission Boundary'))
+    plt.axis('off')
 
 
 def draw_linear_regression_function(reg, ax=None, **kwargs):
@@ -72,9 +57,10 @@ def draw_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwargs)
     # plot decision boundary and margins
     cs = ax.contourf(X1, X2, Z, **kwargs, cmap=cmap, alpha=alpha,)
     cs.collections[0].set_label(kwargs.get('label', 'Decission Boundary'))
+    plt.axis('off')
 
 
-def draw_decission_surface(clf, predictions):
+def draw_decission_surface(clf, predictions, label=None):
     ax = plt.gca()
     x_low, x_high = ax.get_xlim()
     y_low, y_high = ax.get_ylim()
@@ -87,7 +73,7 @@ def draw_decission_surface(clf, predictions):
 
     plt.imshow(Z, extent=[x_low, x_high, y_low, y_high], cmap='GnBu', origin='lower', vmin=0, vmax=1)
     plt.grid()
-    plt.colorbar()
+    plt.colorbar(label=label)
     plt.axis('off')
 
 
