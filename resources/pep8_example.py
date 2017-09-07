@@ -9,7 +9,7 @@ import math, os, sys
 
 def f(x):
     """This function has lines that are just too long. The maximum suggested line length is 80 characters."""
-    return 4.27321*x**3 - 8.375134*x**2 + 7.451431*x + 2.214154 - math.log(3.42153*x) + (1 + math.exp(-6.231452*x**2))
+    return 4.27321*x**3  -8.375134*x**2  + 7.451431*x + 2.214154 - math.log(3.42153*x) + (1 + math.exp(-6.231452*x**2))
 def g(x,
      y):
     print("Bad splitting of arguments")
@@ -28,8 +28,3 @@ a= myvar+7 *  18-myvar2  /  2
 l = 1 # l looks like 1 in some fonts
 I = l # also bad
 O = 0 # O looks like 0 in some fonts
-
-# bad variable names
-kMyUglyVariableName  = 18
-The_Meaning_Of_Life  = 42
-

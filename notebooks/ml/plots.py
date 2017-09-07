@@ -1,25 +1,34 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
-
+from sklearn import tree
+import pydotplus
+import collections
 import seaborn as sns
 import numpy as np
 
 
-def plot_exercise_1(A, B, x1s, x2s):
-    # plotting code
-    plt.scatter(A[:, 0], A[:, 1], s=15, label='True class A')
-    plt.scatter(B[:, 0], B[:, 1], s=15, label='True class B')
+def draw_tree(clf):
+    d = tree.export_graphviz(
+                clf,
+                out_file=None,
+                filled=True,
+    )
+    graph = pydotplus.graph_from_dot_data(d)
 
-    plt.plot(x1s, x2s, color='gray', linestyle='--')
+    colors = ('limegreen', 'dodgerblue')
+    edges = collections.defaultdict(list)
 
-    plt.fill_between(x1s, x2s, 10, color='blue', alpha=0.07)
-    plt.fill_between(x1s, x2s, -10, color='green', alpha=0.07)
+    for edge in graph.get_edge_list():
+        edges[edge.get_source()].append(int(edge.get_destination()))
 
-    plt.xlabel('X1')
-    plt.ylabel('X2')
-    plt.margins(x=0, y=0)
-    plt.legend()
+    for edge in edges:
+        edges[edge].sort()
+        for i in range(2):
+            dest = graph.get_node(str(edges[edge][i]))[0]
+            dest.set_fillcolor(colors[i])
+
+    return graph.create(format='png')
 
 
 def draw_svm_decission_function(clf, ax=None, **kwargs):
@@ -39,6 +48,7 @@ def draw_svm_decission_function(clf, ax=None, **kwargs):
     # plot decision boundary and margins
     cs = ax.contour(X1, X2, Z, levels=[-1., 0, 1.0], linestyles=['--', '-', '--'], **kwargs)
     cs.collections[0].set_label(kwargs.get('label', 'SVM Decission Boundary'))
+    plt.axis('off')
 
 
 def draw_linear_regression_function(reg, ax=None, **kwargs):
@@ -72,6 +82,24 @@ def draw_decission_boundaries(knn, ax=None, cmap='winter', alpha=0.07, **kwargs)
     # plot decision boundary and margins
     cs = ax.contourf(X1, X2, Z, **kwargs, cmap=cmap, alpha=alpha,)
     cs.collections[0].set_label(kwargs.get('label', 'Decission Boundary'))
+    plt.axis('off')
+
+
+def draw_decission_surface(clf, predictions, label=None):
+    ax = plt.gca()
+    x_low, x_high = ax.get_xlim()
+    y_low, y_high = ax.get_ylim()
+    x1 = np.linspace(x_low, x_high, 100)
+    x2 = np.linspace(y_low, y_high, 100)
+
+    X1, X2 = np.meshgrid(x1, x2)
+    xy = np.vstack([X1.ravel(), X2.ravel()]).T
+    Z = clf.predict_proba(xy)[:, 1].reshape(X1.shape)
+
+    plt.imshow(Z, extent=[x_low, x_high, y_low, y_high], cmap='GnBu', origin='lower', vmin=0, vmax=1)
+    plt.grid()
+    plt.colorbar(label=label)
+    plt.axis('off')
 
 
 def plot_bars_and_confusion(truth, prediction, axes=None, vmin=None, vmax=None):
