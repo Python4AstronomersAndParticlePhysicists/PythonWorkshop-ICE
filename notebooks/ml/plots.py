@@ -1,9 +1,34 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
-
+from sklearn import tree
+import pydotplus
+import collections
 import seaborn as sns
 import numpy as np
+
+
+def draw_tree(clf):
+    d = tree.export_graphviz(
+                clf,
+                out_file=None,
+                filled=True,
+    )
+    graph = pydotplus.graph_from_dot_data(d)
+
+    colors = ('limegreen', 'dodgerblue')
+    edges = collections.defaultdict(list)
+
+    for edge in graph.get_edge_list():
+        edges[edge.get_source()].append(int(edge.get_destination()))
+
+    for edge in edges:
+        edges[edge].sort()
+        for i in range(2):
+            dest = graph.get_node(str(edges[edge][i]))[0]
+            dest.set_fillcolor(colors[i])
+
+    return graph.create(format='png')
 
 
 def draw_svm_decission_function(clf, ax=None, **kwargs):
