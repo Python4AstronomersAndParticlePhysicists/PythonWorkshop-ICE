@@ -28,7 +28,7 @@ We encourage everyone to come with their laptop and run all the examples as they
 
 The first 30 minutes of the course will be dedicated to setting up Python and the needed packages. After the first 30 minutes of preparation, instructors will not be able to assist you in your Python setup due to time constraints.
 
-Before arriving to the workshop, make sure you have Python 3 installed with:
+Before arriving to the workshop, make sure you have **Python 3** installed with:
 
     numpy
     scipy
