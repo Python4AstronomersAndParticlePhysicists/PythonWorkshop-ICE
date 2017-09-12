@@ -45,6 +45,15 @@ These packages are needed for the more advanced sections:
     pyephem
     astroquery
     sqlalchemy
+    pyephem
+    astroplan
+    fitsio
+    pyspark
+    healpy
+    pycodestyle
+    scikit-learn
+    pytest
+    ipython-sql
 
 More instructions on how to install and verify the correct Python setup will be detailed soon.
 
