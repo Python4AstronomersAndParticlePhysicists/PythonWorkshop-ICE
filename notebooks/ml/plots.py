@@ -2,13 +2,13 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn import tree
-import pydotplus
 import collections
 import seaborn as sns
 import numpy as np
 
 
 def draw_tree(clf):
+    import pydotplus
     d = tree.export_graphviz(
                 clf,
                 out_file=None,
