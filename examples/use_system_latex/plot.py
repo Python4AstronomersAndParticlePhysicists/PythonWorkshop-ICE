@@ -22,14 +22,14 @@ bin_centers = 0.5 * (bin_edges[:-1] + bin_edges[1:])
 
 
 plt.errorbar(
-    bin_centers,
+    np.log10(bin_centers),
     power_law_spectrum(bin_centers, 1e-12, 2.5),
-    xerr=[bin_centers - bin_edges[:-1], bin_edges[1:] - bin_centers],
+    xerr=[np.log10(bin_centers) - np.log10(bin_edges[:-1]), np.log10(bin_edges[1:]) - np.log10(bin_centers)],
     yerr=0.2 * power_law_spectrum(bin_centers, 1e-12, 2.5),
     linestyle='',
 )
 
-plt.xlabel(r'$E \mathbin{/} \si{\giga\electronvolt}$')
+plt.xlabel(r'$\log_{10}\bigl(E \mathbin{/} \si{\giga\electronvolt}\bigr)$')
 plt.ylabel(
     r'$Φ'
     r'\mathbin{/}'
@@ -37,7 +37,6 @@ plt.ylabel(
 )
 
 plt.text(0.1, 0.1, formula, transform=plt.gca().transAxes)
-plt.xscale('log')
 plt.yscale('log')
 
 plt.tight_layout(pad=0)
