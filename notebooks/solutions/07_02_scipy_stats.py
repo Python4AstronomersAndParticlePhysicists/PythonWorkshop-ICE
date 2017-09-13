@@ -1,5 +1,6 @@
 #07_02_scipy_stats exercise
-m_norm_0 = stats.multivariate_normal(m, c)
+m_norm_0 = stats.multivariate_normal(m[['Apple', 'Microsoft', 'Intel']],
+                                     df_incs[['Apple', 'Microsoft', 'Intel']].cov())
 N_SIMS = 1000
 daily_incs_0 = m_norm_0.rvs(size=[240, N_SIMS])
 year_incs_0 = (daily_incs_0 + 1.).prod(axis=0)
