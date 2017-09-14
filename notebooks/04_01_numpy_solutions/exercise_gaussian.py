@@ -2,10 +2,13 @@ import numpy as np
 
 numbers = np.random.normal(2, 3, 10000)
 
-print('mean:', np.mean(numbers))
-print('std:', np.std(numbers))
+mu = np.mean(numbers)
+sigma = np.std(numbers)
 
-mask = np.logical_or(numbers <= -1, numbers >= 5)
+print('mean:', mu)
+print('std:', sigma)
+
+mask = np.logical_or(numbers < (mu - sigma), numbers > (mu + sigma))
 
 print('Outside 1 sigma:', len(numbers[mask]) / len(numbers))
 
